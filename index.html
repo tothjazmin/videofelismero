@@ -1,0 +1,264 @@
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videó Felismerő Kvíz</title>
+    <style>
+        body {
+            font-family:  fantasy;
+            background-color: lightcoral;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        h2 {
+            color: black;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-panel {
+            display: none;
+            background-color:lightpink;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: left;
+        }
+
+            .quiz-panel p {
+                font-size: 20px;
+                color: black;
+            }
+
+            .quiz-panel input[type="radio"] {
+                margin: 10px 0;
+                margin-left: 20px;
+            }
+
+        button {
+            padding: 12px 20px;
+            background-color:darksalmon;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+            button:hover {
+                background-color: lightcoral;
+            }
+
+        .incorrect {
+            border: 2px solid red;
+            background-color: #ffdddd;
+        }
+
+        .correct {
+            border: 2px solid green;
+            background-color: #ddffdd;
+        }
+
+        #summary {
+            display: none;
+            background-color:lightpink;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+            #summary p {
+                font-size: 20px;
+                color: #333;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Videó Felismerő Kvíz</h2>
+
+        
+        <div id="video1" class="video-container">
+            <video id="quizVideo1" controls>
+                <source src="egyjoasszony.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videólejátszást.
+            </video>
+            <div class="quiz-panel" id="quiz1">
+                <p>Melyik zenét hallod az alábbi videóban?</p>
+                <input type="radio" name="question1" value="Nirvana - Egy jó asszony"> Nirvana - Egy jó asszony<br>
+                <input type="radio" name="question1" value="Berecki Zoltán - Kerekegész">Berecki Zoltán - Kerekegész <br>
+                <input type="radio" name="question1" value="Ámokfutók - Szomorú Szamuráj"> Ámokfutók - Szomorú Szamuráj<br>
+                <button onclick="checkAnswer(1)">Ellenőrzés</button>
+            </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div id="video2" class="video-container" style="display: none;">
+            <video id="quizVideo2" controls>
+                <source src="jimmy.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videólejátszást.
+            </video>
+            <div class="quiz-panel" id="quiz2">
+                <p>Melyik zenét hallod az alábbi videóban?</p>
+                <input type="radio" name="question2" value="Zámbó Jimmy - Nem veszíthetek"> Zámbó Jimmy - Nem veszíthetek<br>
+                <input type="radio" name="question2" value="United - Keserű méz"> United - Keserű méz<br>
+                <input type="radio" name="question2" value="TNT - Titkos üzenet"> TNT - Titkos üzenet<br>
+                <button onclick="checkAnswer(2)">Ellenőrzés</button>
+            </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div id="video3" class="video-container" style="display: none;">
+            <video id="quizVideo3" controls>
+                <source src="szepvagyte.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videólejátszást.
+            </video>
+            <div class="quiz-panel" id="quiz3">
+                <p>Melyik zenét hallod az alábbi videóban?</p>
+                <input type="radio" name="question3" value="Hooligans - Királylány"> Hooligans - Királylány<br>
+                <input type="radio" name="question3" value="Belga - Szerelmes vagyok"> Belga - Szerelmes vagyok<br>
+                <input type="radio" name="question3" value="Animal Cannibals - Takarítónő"> Animal Cannibals - Takarítónő<br>
+                <button onclick="checkAnswer(3)">Ellenőrzés</button>
+            </div>
+        </div>
+
+        
+        <div id="video4" class="video-container" style="display: none;">
+            <video id="quizVideo4" controls>
+                <source src="takaritono.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videólejátszást.
+            </video>
+            <div class="quiz-panel" id="quiz4">
+                <p>Melyik zenét hallod az alábbi videóban?</p>
+                <input type="radio" name="question4" value="Padödö - Kiabálj"> Padödö - Kiabálj<br>
+                <input type="radio" name="question4" value="Animal Cannibals - Takarítónő"> Animal Cannibals - Takarítónő<br>
+                <input type="radio" name="question4" value=" Zámbó Jimmy - Bukott diák"> Zámbó Jimmy - Bukott diák<br>
+                <button onclick="checkAnswer(4)">Ellenőrzés</button>
+            </div>
+        </div>
+
+       
+        <div id="video5" class="video-container" style="display: none;">
+            <video id="quizVideo5" controls>
+                <source src="gyulafiratot.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videólejátszást.
+            </video>
+            <div class="quiz-panel" id="quiz5">
+                <p>Melyik zenét hallod az alábbi videóban?</p>
+                <input type="radio" name="question5" value="Belga - Zsolti a béka"> Belga - Zsolti a béka<br>
+                <input type="radio" name="question5" value="Orsi - Ha le megy a nap"> Orsi - Ha le megy a nap<br>
+                <input type="radio" name="question5" value="Sub Bass Monster - Gyulafirátót"> Sub Bass Monster - Gyulafirátót<br>
+                <button onclick="checkAnswer(5)">Ellenőrzés</button>
+            </div>
+        </div>
+
+        <!-- Video 6 -->
+        <div id="video6" class="video-container" style="display: none;">
+            <video id="quizVideo6" controls>
+                <source src="aranka.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videólejátszást.
+            </video>
+            <div class="quiz-panel" id="quiz6">
+                <p>Melyik zenét hallod az alábbi videóban?</p>
+                <input type="radio" name="question6" value="Open Stage - Aranka szeretlek"> Open Stage - Aranka szeretlek<br>
+                <input type="radio" name="question6" value="Manuel - Zombi"> Manuel - Zombi<br>
+                <input type="radio" name="question6" value="Zámbó Jimmy - Bukott diák"> Zámbó Jimmy - Bukott diák<br>
+                <button onclick="checkAnswer(6)">Ellenőrzés</button>
+            </div>
+        </div>
+
+        <!-- Summary Panel -->
+        <div id="summary" style="display: none;">
+            <h3>Összesítő</h3>
+            <p id="correctAnswers">Helyes válaszok száma: 0</p>
+            <button onclick="restartQuiz()">Újrakezdés</button>
+        </div>
+    </div>
+
+    <script>
+        var correctAnswersCount = 0;
+        var currentVideo = 1;
+        var correctAnswers = {
+            1: 'Nirvana - Egy jó asszony',
+            2: 'Zámbó Jimmy - Nem veszíthetek',
+            3: 'Belga - Szerelmes vagyok',
+            4: 'Animal Cannibals - Takarítónő',
+            5: 'Sub Bass Monster - Gyulafirátót',
+            6: 'Open Stage - Aranka szeretlek'
+        };
+
+        function checkAnswer(videoNumber) {
+            var selectedAnswer;
+            var radios = document.getElementsByName('question' + videoNumber);
+            var correctAnswer = correctAnswers[videoNumber];
+
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedAnswer = radios[i].value;
+                    if (selectedAnswer !== correctAnswer) {
+                        radios[i].parentNode.classList.add('incorrect');
+                    } else {
+                        correctAnswersCount++;
+                        radios[i].parentNode.classList.add('correct');
+                    }
+                    break;
+                }
+            }
+
+            document.getElementById('quizVideo' + videoNumber).pause();
+
+            document.getElementById('video' + videoNumber).style.display = 'none';
+            document.getElementById('quiz' + videoNumber).style.display = 'none';
+
+
+            currentVideo++;
+            if (currentVideo <= 6) {
+                document.getElementById('video' + currentVideo).style.display = 'block';
+                document.getElementById('quiz' + currentVideo).style.display = 'block';
+            } else {
+
+                document.getElementById('summary').style.display = 'block';
+                document.getElementById('correctAnswers').textContent = 'Helyes válaszok száma: ' + correctAnswersCount;
+            }
+        }
+
+        function restartQuiz() {
+            correctAnswersCount = 0;
+            currentVideo = 1;
+            document.getElementById('summary').style.display = 'none';
+
+            for (var i = 1; i <= 6; i++) {
+                document.getElementById('video' + i).style.display = 'none';
+                document.getElementById('quiz' + i).style.display = 'none';
+            }
+
+            document.getElementById('video' + currentVideo).style.display = 'block';
+            document.getElementById('quiz' + currentVideo).style.display = 'block';
+        }
+
+
+        document.getElementById('video1').style.display = 'block';
+        document.getElementById('quiz1').style.display = 'block';
+
+    </script>
+</body>
+</html>
